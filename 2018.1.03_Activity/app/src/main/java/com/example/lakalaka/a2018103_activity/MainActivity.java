@@ -1,5 +1,6 @@
 package com.example.lakalaka.a2018103_activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,62 +49,44 @@ public class MainActivity extends AppCompatActivity {
         Log("onRestart:在活动由停止状态变为运行状态之前调用,即被重新启用");
     }
 
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-
-        // Save away the original text, so we still have it if the activity
-
-        // needs to be killed while paused.
-
-        savedInstanceState.putInt("IntTest", 0);
-
-        savedInstanceState.putString("StrTest", "savedInstanceState test");
-
-        super.onSaveInstanceState(savedInstanceState);
-
-        Log("onSaveInstanceState");
-
-    }
 
     @Override
-
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-
-        super.onRestoreInstanceState(savedInstanceState);
-
-        int IntTest = savedInstanceState.getInt("IntTest");
-
-        String StrTest = savedInstanceState.getString("StrTest");
-
-        Log("onRestoreInstanceState+IntTest=" + IntTest + "+StrTest=" + StrTest);
-
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String tempData="Something you just type";
+        outState.putString("data_key",tempData);
     }
 
-
-
+    private Context mcontext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log("onCreat");
-        if(null != savedInstanceState)
-
-        {
-
-            int IntTest = savedInstanceState.getInt("IntTest");
-
-            String StrTest = savedInstanceState.getString("StrTest");
-
-            Log("onCreate get the savedInstanceState+IntTest="+IntTest+"+StrTest="+StrTest);
-
+        Log.d("MainActivity",this.toString());
+        mcontext=this;
+        if(savedInstanceState!=null){
+            String tempData=savedInstanceState.getString("data_key");
+            Log(tempData);
         }
+
 
 
         Button startNormalActivity = (Button) findViewById(R.id.start_normal_activity);
         Button startDialogActivity = (Button) findViewById(R.id.start_dialog_activity);
+        Button standard= (Button) findViewById(R.id.btn_standard);
+
+        standard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         startDialogActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Normal_Activity.class);
+                Intent intent = new Intent(mcontext, Normal_Activity.class);
                 startActivity(intent);
 
             }
@@ -111,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         startNormalActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Normal_Activity.class);
+                Intent intent = new Intent(mcontext, Normal_Activity.class);
                 startActivity(intent);
             }
         });

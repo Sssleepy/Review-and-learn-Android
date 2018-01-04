@@ -19,6 +19,18 @@
         android:text="Start DialogActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/btn_standard"
+        android:text="standard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/btn_singletop"
+        android:text="singletop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

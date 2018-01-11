@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/aaa"
     tools:context="com.example.lakalaka.a2018110_control.MainActivity">
 
 
@@ -32,6 +33,19 @@
         android:textAllCaps="false"
         android:id="@+id/btn_3"
         android:text="ProgressDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:textAllCaps="false"
+        android:text="ListView"
+        android:id="@+id/btn_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:textAllCaps="false"
+        android:text="Recycler"
+        android:id="@+id/btn_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

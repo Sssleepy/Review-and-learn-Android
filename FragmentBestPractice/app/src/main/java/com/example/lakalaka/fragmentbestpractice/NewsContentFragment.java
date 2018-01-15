@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by lakalaka on 2018/1/12/0012.
  */
 
-public class NewsContentFragment extends Fragment {
+public class  NewsContentFragment extends Fragment {
     private View view;
 
     @Nullable
@@ -26,7 +26,7 @@ public class NewsContentFragment extends Fragment {
         visibilityLayout.setVisibility(View.VISIBLE);
         TextView newsTitleText= (TextView) view.findViewById(R.id.news_title);
         TextView newsContextText= (TextView) view.findViewById(R.id.news_content);
-        newsTitleText.setText(newsTitle);
-        newsContextText.setText(newsContent);
+        newsTitleText.setText(newsTitle);//刷新新闻标题
+        newsContextText.setText(newsContent);//刷新新闻内容
     }
 }

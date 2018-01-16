@@ -39,4 +39,32 @@
        android:layout_height="wrap_content" />
 
 
+
+   <Button
+       android:textAllCaps="false"
+       android:id="@+id/add_data_provider"
+       android:text="Add data provider"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+   <Button
+       android:textAllCaps="false"
+       android:id="@+id/update_data_provider"
+       android:text="Update data provider"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+   <Button
+       android:textAllCaps="false"
+       android:id="@+id/delete_data_provider"
+       android:text="Delete data provider"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+   <Button
+       android:textAllCaps="false"
+       android:id="@+id/query_data_provider"
+       android:text="Query data provider"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+
+
+
 </LinearLayout>

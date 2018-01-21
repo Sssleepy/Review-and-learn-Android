@@ -1,6 +1,7 @@
 package com.example.lakalaka.drawerlayouttest;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
-    private Fruit[] fruits = {new Fruit("Strawberry", R.drawable.jj), new Fruit("strawberry1", R.drawable.jj)
-            , new Fruit("strawberry1", R.drawable.jj), new Fruit("strawberry1", R.drawable.jj)
-            , new Fruit("strawberry1", R.drawable.jj), new Fruit("strawberry1", R.drawable.jj)
-            , new Fruit("strawberry1", R.drawable.jj), new Fruit("strawberry1", R.drawable.jj)
-            , new Fruit("strawberry1", R.drawable.jj), new Fruit("strawberry1", R.drawable.jj)
-            , new Fruit("strawberry1", R.drawable.jj), new Fruit("strawberry1", R.drawable.jj)};
-    private List<Fruit> fruitList=new ArrayList<>();
+    private Fruit[] fruits = {new Fruit("Strawberry", R.drawable.jj), new Fruit("Strawberry", R.drawable.jj)
+            , new Fruit("Strawberry", R.drawable.jj), new Fruit("Strawberry", R.drawable.jj)
+            , new Fruit("Apple", R.drawable.jjjj), new Fruit("Apple", R.drawable.jjjj)
+            , new Fruit("Apple", R.drawable.jjjj), new Fruit("Apple", R.drawable.jjjj)
+            , new Fruit("watermelon", R.drawable.jjj), new Fruit("watermelon", R.drawable.jjj)
+            , new Fruit("watermelon", R.drawable.jjj), new Fruit("watermelon", R.drawable.jjj)};
+    private List<Fruit> fruitList = new ArrayList<>();
 
     private FruitAdapter adapter;
 
@@ -48,19 +49,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        swipeRefresh= (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
         swipeRefresh.setBackgroundResource(R.color.colorPrimary);
+        StatusBarCompat.compat(this, Color.parseColor("#3F51B5"));
 
         initFruits();
-        RecyclerView recyclerView= (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         setDrawerLeftEdgeSize(MainActivity.this, mDrawerLayout, 1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-        GridLayoutManager layouManager=new GridLayoutManager(this,2);
+        GridLayoutManager layouManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layouManager);
-        adapter=new FruitAdapter(fruitList);
+        adapter = new FruitAdapter(fruitList);
         recyclerView.setAdapter(adapter);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -100,13 +102,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void refreshFruits(){
+    private void refreshFruits() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
+                try {
                     Thread.sleep(2000);
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 runOnUiThread(new Runnable() {
@@ -121,11 +123,11 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private void initFruits(){
+    private void initFruits() {
         fruitList.clear();
-        for(int i=0;i<50;i++){
-            Random random=new Random();
-            int index=random.nextInt(fruits.length);
+        for (int i = 0; i < 50; i++) {
+            Random random = new Random();
+            int index = random.nextInt(fruits.length);
             fruitList.add(fruits[index]);
         }
     }

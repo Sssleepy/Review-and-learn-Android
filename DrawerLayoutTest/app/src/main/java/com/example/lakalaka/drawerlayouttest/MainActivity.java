@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         initFruits();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        setDrawerLeftEdgeSize(MainActivity.this, mDrawerLayout, 1);
+        setDrawerLeftEdgeSize(MainActivity.this, mDrawerLayout, 0.6f);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);

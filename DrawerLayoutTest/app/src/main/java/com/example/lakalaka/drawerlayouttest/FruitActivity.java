@@ -109,8 +109,6 @@ public class FruitActivity extends AppCompatActivity {
             case android.R.id.home:
                 Random r = new Random();
                 i = r.nextInt(5);
-                Toast.makeText(this, "" + i, Toast.LENGTH_SHORT).show();
-
                 if (i==3) {
                     Toast.makeText(this, "向右滑动就可以返回哦~", Toast.LENGTH_SHORT).show();
                 }
